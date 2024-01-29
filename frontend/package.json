@@ -25,6 +25,7 @@
     "eject": "react-scripts eject",
     "build-sass": "path/to/global.scss --output path/to/output-folder"
   },
+  "proxy": "http://localhost:3000",
   "eslintConfig": {
     "extends": [
       "react-app",
