@@ -7,7 +7,7 @@ class Api::ArtistsController < ApplicationController
 
     if artist_data && (artist_id = artist_data.dig('artist', 'mbid'))
       setlist_data = setlist_service.get_last_setlist(artist_id)
-      #Create or update model
+
       render json: { artist: artist_data, setlist: setlist_data }
     else
       render json: { error: 'Artist not found' }, status: not_found
