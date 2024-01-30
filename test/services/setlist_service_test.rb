@@ -58,7 +58,7 @@ class SetlistServiceTest < ActiveSupport::TestCase
 
   def stub_setlist_search_artist_request(artist_name, success: true)
     stub_request(:get, 'https://api.setlist.fm/rest/1.0/search/artists')
-      .with(query: { artistName: artist_name })
+      .with(query: { artistName: artist_name, p: 1, sort: 'relevance' })
       .to_return(status: success ? 200 : 404, body: success ? { artist: { name: artist_name } }.to_json : '')
   end
 
