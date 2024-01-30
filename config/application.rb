@@ -11,10 +11,18 @@ module SurroundMe
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
-    # Please, add to the `ignore` list any other `lib` subdirectories that do
-    # not contain `.rb` files, or that should not be reloaded or eager loaded.
-    # Common ones are `templates`, `generators`, or `middleware`, for example.
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'http://localhost:3001'
+        resource '*',
+          headers: :any,
+          methods: [:get, :post, :put, :patch, :delete, :options, :head],
+          credentials: true
+      end
+    end
+
     config.autoload_lib(ignore: %w(assets tasks))
+    config.setlist_fm_api_key = ENV['SETLIST_FM_API_KEY']
 
     # Configuration for the application, engines, and railties goes here.
     #

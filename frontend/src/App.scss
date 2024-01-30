@@ -1,10 +1,26 @@
 @import '../public/fonts/fonts.scss';
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6rem;
 
-h1 {
-  color: #020D41;
-  font-family: Syne;
-  font-size: 8rem;
-  margin: auto;
-  text-align: center;
-  text-shadow: 0 0 1rem white, 0 0 0.8rem #E6A47B;
+  h1 {
+    color: #020D41;
+    font-family: Syne;
+    font-size: 8rem;
+    margin: auto;
+    text-align: center;
+    text-shadow: 0 0 1rem white, 0 0 0.8rem #E6A47B;
+  }
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+
+    &-button {
+      width: 100%;
+      text-align: center;
+    }
+  }
 }

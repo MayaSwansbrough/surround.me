@@ -7,6 +7,19 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  get '/auth/spotify/callback', to: 'users#spotify'
+
+  namespace :api do
+    resources :artists, only: [] do
+      collection do
+        post '/setlist/search', to: 'artists#search', as: 'setlist_search'
+      end
+    end
+
+    resources :setlists, only: [] do
+      collection do
+        post :create_spotify_playlist
+      end
+    end
+  end
 end
