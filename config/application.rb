@@ -24,7 +24,6 @@ module SurroundMe
     config.autoload_lib(ignore: %w(assets tasks))
     config.setlist_fm_api_key = ENV['SETLIST_FM_API_KEY']
 
-
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

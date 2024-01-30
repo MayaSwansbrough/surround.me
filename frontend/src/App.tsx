@@ -13,10 +13,10 @@ const App: React.FC = () => {
 
   const handleSearch = async (artistName: string) => {
     try {
-      if (!isAuthenticated) {
-        console.error('User is not authenticated. Please authenticate first.');
-        return;
-      }
+      // if (!isAuthenticated) {
+      //   console.error('User is not authenticated. Please authenticate first.');
+      //   return;
+      // }
 
       const setlistData = await fetchArtist(artistName);
       console.log(setlistData);
@@ -27,12 +27,16 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <div className="App logo">
+      <div className="App-logo">
         <h1>Surround.me</h1>
       </div>
-      <div className="App container">
-        <SpotifyLoginButton onAuthenticate={handleAuthentication} />
-        <Searchbar onSearch={handleSearch} />
+      <div className="App-container">
+        <div className="App-container-searchbar">
+          <Searchbar onSearch={handleSearch} />
+        </div>
+        <div className="App-container-button">
+          <SpotifyLoginButton onAuthenticate={handleAuthentication} />
+        </div>
       </div>
     </div>
   )

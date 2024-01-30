@@ -3,22 +3,11 @@ class Api::ArtistsController < ApplicationController
 
   def search
     if @artist_data
-      CreateSpotifyPlaylistJob.perform_now(first_setlist)
-      render json: { artist: artist, setlist: first_setlist }
+      songs = CreateSpotifyPlaylistJob.perform_now(first_setlist)
+      render json: { artist: artist, setlist: first_setlist, songs: songs }
     else
       render json: { error: 'Artist not found' }
     end
-  end
-
-  def spotify_callback
-    auth = request.env['omniauth.auth']
-    user = RSpotify::User.new(auth)
-
-    render json: { success: true }
-  end
-
-  def spotify_auth
-    redirect_to '/auth/spotify'
   end
 
   private

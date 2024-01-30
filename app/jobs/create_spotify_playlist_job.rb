@@ -3,6 +3,7 @@ class CreateSpotifyPlaylistJob < ApplicationJob
 
   def perform(setlist)
     @setlist = setlist
+    @artist = @setlist['artist']['name']
 
     create_spotify_playlist
   end
@@ -11,19 +12,20 @@ class CreateSpotifyPlaylistJob < ApplicationJob
 
   def create_spotify_playlist
     songs = setlist_songs(@setlist).map do |song|
-      "#{song['name']} #{@setlist['artist']['name']}"
+      "#{song['name']} - #{@artist}"
     end
 
-    spotify_tracks = songs.map do |song|
-      RSpotify::Track.search(song).first
-    end
+    # spotify_tracks = songs.map do |song|
+    #   RSpotify::Track.search(song).first
+    # end
 
-    user = RSpotify::User.find('Saturnaliia')
-    playlist = user.create_playlist!("Playlist Name", public: false)
+    # user = RSpotify::User.new(request.env['omniauth.auth'])
 
-    spotify_tracks.each do |track|
-      playlist.add_tracks!([track])
-    end
+    # playlist = user.create_playlist!("#{@artist} Setlist", public: false)
+
+    # spotify_tracks.each do |track|
+    #   playlist.add_tracks!([track])
+    # end
   end
 
   def setlist_songs(setlist)

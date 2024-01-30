@@ -15,6 +15,7 @@ gem "bootsnap", require: false
 gem "active_model_serializers"
 gem "rspotify"
 gem "omniauth-spotify"
+gem 'omniauth-rails_csrf_protection'
 gem "httparty"
 gem "rest-client"
 gem "webmock"

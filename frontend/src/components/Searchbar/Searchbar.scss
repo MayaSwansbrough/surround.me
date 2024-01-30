@@ -37,3 +37,15 @@
     }
   }
 }
+
+.spotifyLoginButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  .css-sghohy-MuiButtonBase-root-MuiButton-root {
+      background-color: #1DB954;
+      color: #000;
+    }
+}
